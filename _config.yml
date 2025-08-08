@@ -1,0 +1,42 @@
+# GitHub Pages Configuration
+# This file configures the site for GitHub Pages
+
+# Site settings
+title: "Improving Stroke Recovery in Rural Communities"
+description: "Research website focused on stroke recovery initiatives in rural communities"
+url: "https://thedecodelab.github.io"
+baseurl: "/PCORI-Website"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:collection/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
