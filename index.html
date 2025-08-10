@@ -125,63 +125,6 @@
             animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
         }
         
-        /* Responsive text adjustments */
-        @media (max-width: 640px) {
-            .typewriter {
-                white-space: normal;
-                border-right: none;
-                animation: none;
-            }
-            
-            .text-shadow {
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            }
-        }
-        
-        /* Ensure text doesn't overflow on very small screens */
-        @media (max-width: 480px) {
-            .relative.z-10.text-center {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-            
-            .relative.z-10.text-center h1 {
-                font-size: 1.5rem;
-                line-height: 1.2;
-            }
-            
-            .relative.z-10.text-center p {
-                font-size: 1rem;
-                line-height: 1.4;
-            }
-        }
-        
-        /* Handle long titles and text overflow */
-        @media (max-width: 768px) {
-            h2, h3 {
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                hyphens: auto;
-            }
-            
-            .gradient-text {
-                background-size: 200% 200%;
-            }
-        }
-        
-        /* Additional responsive adjustments for very long titles */
-        @media (max-width: 640px) {
-            h3.text-xl {
-                font-size: 1rem;
-                line-height: 1.3;
-            }
-            
-            .text-center h2 {
-                font-size: 1.5rem;
-                line-height: 1.3;
-            }
-        }
-        
         @keyframes typing {
             from { width: 0; }
             to { width: 100%; }
@@ -237,26 +180,6 @@
             }
         }
         
-        /* Ensure all text containers have proper responsive behavior */
-        .max-w-6xl, .max-w-4xl {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-        
-        @media (min-width: 640px) {
-            .max-w-6xl, .max-w-4xl {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .max-w-6xl, .max-w-4xl {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-        }
-        
         /* Gradient text */
         .gradient-text {
             background: linear-gradient(135deg, #1e3a8a, #1e40af, #1d4ed8);
@@ -274,6 +197,11 @@
         .grid-item {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Ensure avatar containers do not shrink in flex rows (prevents oval images) */
+        .card .rounded-full.overflow-hidden {
+            flex-shrink: 0;
         }
     </style>
 </head>
@@ -296,11 +224,11 @@
         </div>
         
         <div class="absolute inset-0 bg-black opacity-60"></div>
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-4 text-shadow typewriter break-words">
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-shadow typewriter">
                 Improving Stroke Outcomes in Rural Communities
             </h1>
-            <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium mb-8 text-shadow break-words px-2">
+            <p class="text-xl sm:text-2xl lg:text-3xl font-medium mb-8 text-shadow">
                 Building Capacity for Patient-Centered by Engaging Rural Stroke Survivors and Caregivers
             </p>
             <a href="#about" class="btn-primary inline-block glow">
@@ -395,9 +323,8 @@
         <!-- Audio Section -->
         <section id="audio" class="section-padding bg-white relative overflow-hidden">
             <div class="max-w-4xl mx-auto text-center relative z-10">
-                <h2 class="text-3xl sm:text-4xl font-bold mb-8 gradient-text">Audio Content</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 gradient-text">Listen to Our Project Overview</h2>
                 <div class="card p-8">
-                    <h3 class="text-xl font-semibold mb-4">Listen to Our Project Overview</h3>
                     <audio controls class="w-full max-w-md mx-auto mb-6">
                         <source src="audio/luvvoice.com-20250808-ReLb6h.mp3" type="audio/mpeg">
                         Your browser does not support the audio element.
@@ -406,7 +333,6 @@
                     
                     <!-- Download Link Option -->
                     <div class="mt-6 pt-6 border-t border-gray-200">
-                        <h4 class="text-lg font-semibold mb-3">Download Audio File</h4>
                         <a href="audio/luvvoice.com-20250808-ReLb6h.mp3" download class="btn-primary inline-block">
                             <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -451,67 +377,66 @@
                 <h3 class="text-2xl font-semibold mb-6 gradient-text">Principal Investigators</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/dr-zand.jpg" alt="Dr.Ramin Zand" class="w-20 h-20 rounded-full object-cover object-top shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/dr-zand.jpg" alt="Dr.Ramin Zand" class="w-full h-full object-cover object-top">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Zand, Ramin.</p>
-                            <p class="text-base text-gray-600">Co-Principal Investigator</p>
-                            <p class="text-base text-gray-600">Professor of Vascular Neurology</p>
-                            <p class="text-base text-gray-600">Department of Neurology, Pennsylvania State University</p>
+                            <p class="text-base text-gray-600">Principal Investigator</p>
+                            <p class="text-base text-gray-600">Professor of Vascular Neurology, Department of Neurology, Pennsylvania State University
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/dr-mcshane.jpg" alt="Dr. Michael McShane" class="w-20 h-20 rounded-full object-cover object-top shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/dr-mcshane.jpg" alt="Dr. Michael McShane" class="w-full h-full object-cover object-top">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">McShane, Michael P.</p>
-                            <p class="text-base text-gray-600">Principal Investigator</p>
+                            <p class="text-base text-gray-600">Co-Principal Investigator</p>
+                            <p class="text-base text-gray-600">Associate Professor, College of Medicine (University Park Curriculum)
+
                         </div>
                     </div>
                 </div>
 
                 <h3 class="text-2xl font-semibold mb-6 gradient-text">Co-Investigators and Staff</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/vka5162.webp" alt="Vida Abedi" class="w-20 h-20 rounded-full object-cover object-top shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/vka5162.webp" alt="Vida Abedi" class="w-full h-full object-cover object-top">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Abedi, Vida.</p>
                             <p class="text-base text-gray-600">Associate Professor, Department of Public Health Sciences</p>
                             <p class="text-base text-gray-600">Program Lead Designee</p>
                         </div>
                     </div>
-                    <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/Danielle Gerzensky.jfif" alt="Danielle Gerzsenyi" class="w-20 h-20 rounded-full object-cover shadow-md">
-                        <div>
-                            <p class="text-xl font-semibold">Gerzsenyi, Danielle.</p>
-                            <p class="text-base text-gray-600">Financial Contact</p>
-                        </div>
-                    </div>
 
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/Nazli.jpg" alt="Nazli Radfar" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/Nazli.jpg" alt="Nazli Radfar" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Radfar, Nazli.</p>
                             <p class="text-base text-gray-600">Project Manager</p>
                         </div>
                     </div>
+
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/Sara Thorndike Portrait 2_0.jpg" alt="Sara F. Thorndike" class="w-20 h-20 rounded-full object-cover object-top shadow-md">
-                        <div>
-                            <p class="text-xl font-semibold">Thorndike, Sara F.</p>
-                            <p class="text-base text-gray-600">Administrative Official</p>
-                            <p class="text-base text-gray-600">Senior Vice President for Finance & Business/Treasurer</p>
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/Ajith vemuri.jpg" alt="Ajith Vamuri" class="w-full h-full object-cover">
                         </div>
-                    </div>
-                    <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/Ajith vemuri.jpg" alt="Ajith Vamuri" class="w-20 h-20 rounded-full object-cover shadow-md">
                         <div>
                             <p class="text-xl font-semibold">Vamuri, Ajith.</p>
                             <p class="text-base text-gray-600">Staff Scientist</p>
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/unknown.jpg" alt="Mike " class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/unknown.jpg" alt="Mike " class="w-full h-full object-cover">
+                        </div>
                         <div>
-                            <p class="text-xl font-semibold">Zonk, Michelle.</p>
+                            <p class="text-xl font-semibold">Vonk, Michelle.</p>
                             <p class="text-base text-gray-600">Grants & Contract Manager</p>
                         </div>
                     </div>
@@ -520,7 +445,9 @@
                 <h3 class="text-2xl font-semibold mb-6 gradient-text">Consultant</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/unknown.jpg" alt="Gay Thomas" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/Gay thomas.jpg" alt="Gay Thomas" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Thomas, Gay.</p>
                             <p class="text-base text-gray-600">Owner, GR Thomas Advisors LLC</p>
@@ -528,7 +455,9 @@
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/maria_suarez-almazor.jpg" alt="Maria E. Suarez-Almazor" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/maria_suarez-almazor.jpg" alt="Maria E. Suarez-Almazor" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Suarez-Almazor, Maria E.</p>
                             <p class="text-base text-gray-600">Department of Health Services Research, Division of Cancer Prevention and Population Sciences</p>
@@ -536,7 +465,9 @@
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/Emily Zimmerman. jpg.webp" alt="Emily Zimmerman" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/Emily Zimmerman. jpg.webp" alt="Emily Zimmerman" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Zimmerman, Emily.</p>
                             <p class="text-base text-gray-600">Doctor of Philosophy, Associate Professor at Virginia Commonwealth University</p>
@@ -548,78 +479,101 @@
                 <h3 class="text-2xl font-semibold mb-6 gradient-text">Community Advisory Board (CAB) Members</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/Coleman, Amber CH.jpg" alt="Amber Coleman" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/Coleman, Amber CH.jpg" alt="Amber Coleman" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Coleman, Amber.</p>
-                            <p class="text-base text-gray-600">Director, Community Health Penn State Health</p>
+                            <p class="text-base text-gray-600">Director of Community Health, Penn State Health</p>
+                            <p class="text-base text-gray-600">Advisory Team
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/Wenke Hwang (002).jpg" alt="Wenke Hwang" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/Wenke Hwang (002).jpg" alt="Wenke Hwang" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Hwang, Wenke.</p>
                             <p class="text-base text-gray-600">Professor, Department of Public Health Sciences</p>
-                            <p class="text-base text-gray-600">Caregiver</p>
+                            <p class="text-base text-gray-600">Advisory Team & Caregiver</p>
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/Scott Patrick.jpg" alt="Scott Patrick" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/Scott Patrick.jpg" alt="Scott Patrick" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Patrick, Scott.</p>
-                            <p class="text-base text-gray-600">Real estate investor and former collegiate athlete based in Hershey, Pennsylvania</p>
+                            <p class="text-base text-gray-600">Real estate investor and former collegiate athlete based, Hershey, Pennsylvania</p>
                             <p class="text-base text-gray-600">Stroke survivor</p>
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/unknown.jpg" alt="Philip Dux" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/unknown.jpg" alt="Philip Dux" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Dux, Philip.</p>
                             <p class="text-base text-gray-600">Stroke survivor</p>
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/Alicia.png" alt="Alicia Richardson" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/Alicia.png" alt="Alicia Richardson" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Richardson, Alicia.</p>
-                            <p class="text-base text-gray-600">Stroke nurse, system stroke director, and advocacy leader at Penn State Health</p>
+                            <p class="text-base text-gray-600">Stroke Nurse, System Stroke Director, and Advocacy Leader, Penn State Health 
+                            <p class="text-base text-gray-600">Advisory Team</p>
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/Pete Roy_400x600.jpg" alt="Pete Roy" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/Pete Roy_400x600.jpg" alt="Pete Roy" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Roy, Pete.</p>
-                            <p class="text-base text-gray-600">Neurologist</p>
-                            <p class="text-base text-gray-600">Director Neurosciences and Stroke Program, Mount Nittany Health</p>
+                            <p class="text-base text-gray-600">Neurologist and Director, Neurosciences and Stroke Program, Mount Nittany Health
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/unknown.jpg" alt="Danielle Taylor" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/unknown.jpg" alt="Danielle Taylor" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Taylor, Danielle.</p>
-                            <p class="text-base text-gray-600">Speech-Language Pathologist Geisinger Memory and Cognition</p>
+                            <p class="text-base text-gray-600">Speech-Language Pathologist, Geisinger Memory and Cognition Program
+                            <p class="text-base text-gray-600">Advisory Team</p>
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/unknown.jpg" alt="Lisa Wasko" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/unknown.jpg" alt="Lisa Wasko" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Wasko, Lisa.</p>
-                            <p class="text-base text-gray-600">Stroke nurse, system stroke director, and advocacy leader at Geisinger</p>
+                            <p class="text-base text-gray-600">Stroke Nurse, System Stroke Director and Advocacy Leader, Geisinger
+                            <p class="text-base text-gray-600">Advisory Team</p>
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/unknown.jpg" alt="Amy Wildasin" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/unknown.jpg" alt="Amy Wildasin" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Wildasin, Amy.</p>
-                            <p class="text-base text-gray-600">Nurse Navigator- Stroke Program at Penn State Health</p>
+                            <p class="text-base text-gray-600">Nurse Navigator, Stroke Program, Penn State Health
+                            <p class="text-base text-gray-600">Advisory Team</p>
                         </div>
                     </div>
                     <div class="card p-6 flex items-center space-x-4">
-                        <img src="photos/revised ID picture.jpg" alt="Lannette Fetzer" class="w-20 h-20 rounded-full object-cover shadow-md">
+                        <div class="w-20 h-20 rounded-full overflow-hidden shadow-md">
+                            <img src="photos/revised ID picture.jpg" alt="Lannette Fetzer" class="w-full h-full object-cover">
+                        </div>
                         <div>
                             <p class="text-xl font-semibold">Fetzer, Lannette.</p>
-                            <p class="text-base text-gray-600">Board-certified Family Nurse Practitioner</p>
-                            <p class="text-base text-gray-600">Quality Improvement Coordinator at the Pennsylvania Office of Rural Health</p>
-                            <p class="text-base text-gray-600">Advisory Team and Caregiver</p>
+                            <p class="text-base text-gray-600">Family Nurse Practitioner, Quality Improvement Coordinator at the Pennsylvania Office of Rural Health</p>
+                            <p class="text-base text-gray-600">Advisory Team & Caregiver</p>
                         </div>
                     </div>
                 </div>
@@ -646,7 +600,9 @@
                         </p>
                     </div>
                     <div class="md:w-1/3">
-                        <img src="photos/CAB member.jpg" alt="A group of people engaged in a discussion, symbolizing collaboration" class="rounded-xl shadow-lg w-full h-auto object-cover">
+                        <div class="rounded-xl overflow-hidden shadow-lg w-full" style="aspect-ratio: 1 / 1;">
+                            <img src="photos/CAB member picture.jpg" alt="A group of people engaged in a discussion, symbolizing collaboration" class="w-full h-full object-cover">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -693,13 +649,14 @@
             </div>
             <div class="max-w-6xl mx-auto relative z-10">
                 <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center gradient-text">Engagement Training and Tools</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div class="grid grid-cols-1 gap-6 max-w-4xl mx-auto">
                     <!-- Resource Card 1 -->
                     <div class="card p-6">
                         <div class="flex items-start space-x-3">
                             <span class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</span>
                             <div class="flex-1">
-                                <h3 class="text-xl font-semibold mb-2 gradient-text">Enhance Understanding of CER</h3>
+                                <h3 class="text-xl font-semibold gradient-text mb-2">Enhance Understanding of CER</h3>
                                 <h4 class="text-lg font-semibold mb-2 text-blue-600">CERTaiN Training</h4>
                                 <p class="text-base font-semibold mb-2 text-gray-800">CERTaIN: CER/PCOR Methods: Introduction</p>
                                 <p class="text-sm text-gray-600 mb-4">Comprehensive training for patient-centered research.</p>
@@ -712,9 +669,9 @@
                         <div class="flex items-start space-x-3">
                             <span class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</span>
                             <div class="flex-1">
-                                <h3 class="text-xl font-semibold mb-2 gradient-text">CITI Program Courses at Penn State</h3>
-                                <p class="text-gray-700 mb-4">Comprehensive research compliance training and certification courses available through Penn State's CITI Program.</p>
-                                <a href="https://citi.psu.edu/" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">Access CITI Courses &rarr;</a>
+                                <h3 class="text-xl font-semibold gradient-text mb-2">Penn State Clinical and Translational Science Institute (CTSI)</h3>
+                                <p class="text-gray-700 mb-4">Comprehensive tools, services and training to make health research more efficient at Penn State. Provides resources for study design, data collection, recruitment, and community engagement.</p>
+                                <a href="https://ctsi.psu.edu/" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">Access CTSI Resources &rarr;</a>
                             </div>
                         </div>
                     </div>
@@ -723,9 +680,9 @@
                         <div class="flex items-start space-x-3">
                             <span class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</span>
                             <div class="flex-1">
-                                <h3 class="text-xl font-semibold mb-2 gradient-text">Research Fundamentals: Preparing You to Successfully Contribute to Research | PCORI</h3>
-                                <p class="text-gray-700 mb-4">A foundational learning package for contributing to patient-centered outcomes research.</p>
-                                <a href="https://www.pcori.org/engagement-research/engagement-resources/research-fundamentals-preparing-you-successfully-contribute-research" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">Explore resource &rarr;</a>
+                                <h3 class="text-xl font-semibold gradient-text mb-2">IRB Resources and Videos from Penn State IRB</h3>
+                                <p class="text-gray-700 mb-4">Comprehensive resources, training materials, and videos for Institutional Review Board (IRB) submissions and human subjects research compliance.</p>
+                                <a href="https://researchsupport.psu.edu/orp/irb/irb-resources-training-and-events/" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">Access IRB Resources &rarr;</a>
                             </div>
                         </div>
                     </div>
@@ -734,9 +691,9 @@
                         <div class="flex items-start space-x-3">
                             <span class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</span>
                             <div class="flex-1">
-                                <h3 class="text-xl font-semibold mb-2 gradient-text">Sampling, Recruiting, and Retaining Study Participants: Research Fundamentals Learning Package Module 4</h3>
-                                <p class="text-gray-700 mb-4">Focuses on sampling, recruiting, and retaining study participants.</p>
-                                <a href="https://www.pcori.org/engagement-research/engagement-resources/research-fundamentals-preparing-you-successfully-contribute-research/sampling-recruiting-and-retaining-study-participants-research-fundamentals-learning-package-module-4" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">Explore module &rarr;</a>
+                                <h3 class="text-xl font-semibold gradient-text mb-2">Research Fundamentals: Preparing You to Successfully Contribute to Research | PCORI</h3>
+                                <p class="text-gray-700 mb-4">A foundational learning package for contributing to patient-centered outcomes research.</p>
+                                <a href="https://www.pcori.org/engagement-research/engagement-resources/research-fundamentals-preparing-you-successfully-contribute-research" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">Explore resource &rarr;</a>
                             </div>
                         </div>
                     </div>
@@ -745,7 +702,18 @@
                         <div class="flex items-start space-x-3">
                             <span class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">5</span>
                             <div class="flex-1">
-                                <h3 class="text-xl font-semibold mb-2 gradient-text">The SEED Method: An Evidence-Based Method for Engaging Communities</h3>
+                                <h3 class="text-xl font-semibold gradient-text mb-2">Sampling, Recruiting, and Retaining Study Participants: Research Fundamentals Learning Package Module 4</h3>
+                                <p class="text-gray-700 mb-4">Focuses on sampling, recruiting, and retaining study participants.</p>
+                                <a href="https://www.pcori.org/engagement-research/engagement-resources/research-fundamentals-preparing-you-successfully-contribute-research/sampling-recruiting-and-retaining-study-participants-research-fundamentals-learning-package-module-4" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">Explore module &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Resource Card 6 -->
+                    <div class="card p-6">
+                        <div class="flex items-start space-x-3">
+                            <span class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">6</span>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold gradient-text mb-2">The SEED Method: An Evidence-Based Method for Engaging Communities</h3>
                                 <p class="text-gray-700 mb-4">A valuable resource for community engagement in research.</p>
                                 <a href="https://connect.extension.org/g/the-seed-method-an-evidence-based-method-for-engaging-communities" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">Learn more &rarr;</a>
                             </div>
@@ -779,6 +747,11 @@
                         <h3 class="text-xl font-semibold mb-2 gradient-text">The Patient-centered Outcomes Research Institute's Role in Advancing Methods for Patient-centered Outcomes Research</h3>
                         <p class="text-gray-700 mb-4">Overview of PCORI's mission and methodology development for patient-centered comparative effectiveness research.</p>
                         <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4336314/" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">Read article &rarr;</a>
+                    </div>
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-2 gradient-text">Care Transition Interventions to Improve Stroke Outcomes: Evidence Gaps in Underserved and Minority Populations</h3>
+                        <p class="text-gray-700 mb-4">Research on care transition interventions and their impact on stroke outcomes in underserved and minority populations.</p>
+                        <a href="https://www.ahajournals.org/doi/10.1161/STROKEAHA.122.039565?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%20%200pubmed" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">Read article &rarr;</a>
                     </div>
                 </div>
             </div>
